@@ -1,0 +1,23 @@
+<div style="position: sticky; top: 0; left: 0; background-color: white;">
+    || COUNT: {{count}} || <br><br>
+    || {{componentVisibilityDict | json}} ||
+</div>
+
+<div infinite-scroll [infiniteScrollDistance]="3" [infiniteScrollUpDistance]="2" [infiniteScrollThrottle]="300"
+    [immediateCheck]="true" (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
+
+    <!-- <div *ngFor="let num of list">
+        {{num}}
+    </div> -->
+
+    <app-comp1></app-comp1>
+    <app-comp2></app-comp2>
+    <app-comp3></app-comp3>
+    <app-comp4></app-comp4>
+    <app-comp5 *ngIf="componentVisibilityDict?.COMP5?.value"></app-comp5>
+    <app-comp6 *ngIf="componentVisibilityDict?.COMP6?.value"></app-comp6>
+    <app-comp7 *ngIf="componentVisibilityDict?.COMP7?.value"></app-comp7>
+    <app-comp8 *ngIf="componentVisibilityDict?.COMP8?.value"></app-comp8>
+    <app-comp9 *ngIf="componentVisibilityDict?.COMP9?.value"></app-comp9>
+
+</div>

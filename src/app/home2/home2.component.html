@@ -1,0 +1,26 @@
+<div style="position: sticky; top: 0; left: 0; background-color: white;">
+    HOME2 <br><br>
+    {{visibilityStatus | json}}
+</div>
+
+<div>
+
+    <!-- <div *ngFor="let num of list">
+        {{num}}
+    </div> -->
+
+    <app-comp1></app-comp1>
+    <app-comp2></app-comp2>
+    <app-comp3></app-comp3>
+    <app-comp4></app-comp4>
+    <app-comp5></app-comp5>
+    <app-comp6 intersectionObserver [intersectionDebounce]="100" (visibilityChange)="onVisibilityChanged(6, $event)"
+        *ngIf="visibilityStatus[6]==intersectionStatus.Visible"></app-comp6>
+    <app-comp7 intersectionObserver [intersectionDebounce]="100" (visibilityChange)="onVisibilityChanged(7, $event)"
+        *ngIf="visibilityStatus[7]==intersectionStatus.Visible"></app-comp7>
+    <app-comp8 intersectionObserver [intersectionDebounce]="100" (visibilityChange)="onVisibilityChanged(8, $event)"
+        *ngIf="visibilityStatus[8]==intersectionStatus.Visible"></app-comp8>
+    <app-comp9 intersectionObserver [intersectionDebounce]="100" (visibilityChange)="onVisibilityChanged(9, $event)"
+        *ngIf="visibilityStatus[9]==intersectionStatus.Visible"></app-comp9>
+
+</div>
