@@ -18,6 +18,8 @@ import { Home2Component } from './home2/home2.component';
 import { IntersectionObserverDirective } from './shared/directives/intersection-observer.directive';
 import { Home3Component } from './home3/home3.component';
 import { ViewportTriggerComponent } from './shared/components/viewport-trigger/viewport-trigger.component';
+import { Home4Component } from './home4/home4.component';
+import { ViewportVisibilityListenerDirective } from './shared/directives/viewport-visibility-listener.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ViewportTriggerComponent } from './shared/components/viewport-trigger/v
     Home2Component,
     IntersectionObserverDirective,
     Home3Component,
-    ViewportTriggerComponent
+    ViewportTriggerComponent,
+    Home4Component,
+    ViewportVisibilityListenerDirective
   ],
   imports: [
     BrowserModule,
