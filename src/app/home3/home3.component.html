@@ -1,16 +1,41 @@
+<div style="position: sticky; top: 0; left: 0; background-color: white;">
+    {{visibileSectionsTrigger | json}}
+</div>
+
 <div id="scrollArea">
 
     <app-comp1></app-comp1>
     <app-comp2></app-comp2>
-    <app-viewport-trigger (onViewVisibile)="onViewVisibileMain(1)"></app-viewport-trigger>
     <app-comp3></app-comp3>
     <app-comp4></app-comp4>
-    <app-comp5></app-comp5>
-    <app-comp6></app-comp6>
-    <app-viewport-trigger (onViewVisibile)="onViewVisibileMain(2)"></app-viewport-trigger>
-    <app-comp7></app-comp7>
-    <app-comp8></app-comp8>
-    <app-comp9></app-comp9>
-    <app-viewport-trigger (onViewVisibile)="onViewVisibileMain(3)"></app-viewport-trigger>
+
+    <!-- Comp 5 -->
+    <app-viewport-trigger (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S5)">
+    </app-viewport-trigger>
+    <app-comp5 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S5]"></app-comp5>
+
+    <!-- Comp 6 -->
+    <app-viewport-trigger *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S5]"
+        (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S6)">
+    </app-viewport-trigger>
+    <app-comp6 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S6]"></app-comp6>
+
+    <!-- Comp 7 -->
+    <app-viewport-trigger *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S6]"
+        (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S7)">
+    </app-viewport-trigger>
+    <app-comp7 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S7]"></app-comp7>
+
+    <!-- Comp 8 -->
+    <app-viewport-trigger *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S7]"
+        (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S8)">
+    </app-viewport-trigger>
+    <app-comp8 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S8]"></app-comp8>
+
+    <!-- Comp 9 -->
+    <app-viewport-trigger *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S8]"
+        (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S9)">
+    </app-viewport-trigger>
+    <app-comp9 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S9]"></app-comp9>
 
 </div>

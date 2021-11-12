@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+enum SectionVisibilityEnum {
+  S4 = 'S4',
+  S5 = 'S5',
+  S6 = 'S6',
+  S7 = 'S7',
+  S8 = 'S8',
+  S9 = 'S9',
+}
+
 @Component({
   selector: 'app-home3',
   templateUrl: './home3.component.html',
@@ -11,8 +20,13 @@ export class Home3Component implements OnInit {
 
   ngOnInit(): void { }
 
+  visibileSectionsTrigger: any = {};
+  sectionVisibilityEnum = SectionVisibilityEnum;
+
+  // Function which gets triggered when the section is visible in viewport
   onViewVisibileMain(id: any) {
-    console.log(`MAIN ID: ${id}`)
+    // console.log(`MAIN ID: ${id}`)
+    this.visibileSectionsTrigger[id] = true;          // Marking the section using Section-id as VISIBLE
   }
 
 }

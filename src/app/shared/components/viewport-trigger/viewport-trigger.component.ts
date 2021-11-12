@@ -10,38 +10,29 @@ export class ViewportTriggerComponent implements OnInit {
 
   constructor(private el: ElementRef) { }
 
-  ngOnInit(): void {
-    console.log('INIT Trigger');
-
-    // if (window.IntersectionObserver) {
-    //   this.viewportListener = new IntersectionObserver((entries, observer) => {
-    //     console.log(`Entries: ${entries}`)
-    //   }, {
-    //     root: document.querySelector('#scrollArea'),
-    //     rootMargin: '0px',
-    //     threshold: 1.0          // 1.0 means that when 100% of the target is visible within the element specified by the root option, the callback is invoked
-    //   });
-    // }
-    // else {
-    //   alert('no support')
-    // }
-  }
+  ngOnInit(): void { }
 
   ngAfterViewInit() {
-    this.viewportListener = new IntersectionObserver(entries => {
+    if (window.IntersectionObserver) {
+      this.viewportListener = new IntersectionObserver(entries => {
 
-      if (entries[0].isIntersecting === true) {
-        console.log(`Entries: ${entries}`)
-        this.onViewVisibility();
-      }
-      else {
-        // this.viewportVisibleFlag = false;
-      }
-    }, {
-      threshold: 0.75
-    });
+        if (entries[0].isIntersecting === true) {
+          // console.log(`Entries: ${entries}`)
+          this.onViewVisibility();
+        }
+        else {
+          // this.viewportVisibleFlag = false;
+        }
+      }, {
+        root: null,
+        rootMargin: "100px",
+        threshold: 0.11
+      });
 
-    this.viewportListener.observe(this.el.nativeElement as HTMLElement);
+      this.viewportListener.observe(this.el.nativeElement as HTMLElement);
+    }
+    else
+      alert('Not Supported !');
   }
 
   viewportListener: any = new Subject();

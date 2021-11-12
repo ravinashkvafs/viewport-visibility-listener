@@ -10,6 +10,7 @@ export class Comp5Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(`!!! Component5 Loaded !!!`);
   }
 
 }

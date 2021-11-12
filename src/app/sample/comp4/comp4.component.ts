@@ -10,6 +10,7 @@ export class Comp4Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(`!!! Component4 Loaded !!!`);
   }
 
 }
