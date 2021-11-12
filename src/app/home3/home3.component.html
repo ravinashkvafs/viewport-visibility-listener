@@ -10,30 +10,35 @@
     <app-comp4></app-comp4>
 
     <!-- Comp 5 -->
-    <app-viewport-trigger (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S5)">
+    <app-viewport-trigger (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S5)"
+        (notSupportedTrigger)="onViewVisibileMain(sectionVisibilityEnum.S5)">
     </app-viewport-trigger>
     <app-comp5 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S5]"></app-comp5>
 
     <!-- Comp 6 -->
     <app-viewport-trigger *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S5]"
+        (notSupportedTrigger)="onViewVisibileMain(sectionVisibilityEnum.S6)"
         (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S6)">
     </app-viewport-trigger>
     <app-comp6 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S6]"></app-comp6>
 
     <!-- Comp 7 -->
     <app-viewport-trigger *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S6]"
+        (notSupportedTrigger)="onViewVisibileMain(sectionVisibilityEnum.S7)"
         (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S7)">
     </app-viewport-trigger>
     <app-comp7 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S7]"></app-comp7>
 
     <!-- Comp 8 -->
     <app-viewport-trigger *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S7]"
+        (notSupportedTrigger)="onViewVisibileMain(sectionVisibilityEnum.S8)"
         (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S8)">
     </app-viewport-trigger>
     <app-comp8 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S8]"></app-comp8>
 
     <!-- Comp 9 -->
     <app-viewport-trigger *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S8]"
+        (notSupportedTrigger)="onViewVisibileMain(sectionVisibilityEnum.S9)"
         (onViewVisibile)="onViewVisibileMain(sectionVisibilityEnum.S9)">
     </app-viewport-trigger>
     <app-comp9 *ngIf="visibileSectionsTrigger[sectionVisibilityEnum.S9]"></app-comp9>

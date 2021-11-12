@@ -12,7 +12,7 @@ export class ViewportTriggerComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     if (window.IntersectionObserver) {
       this.viewportListener = new IntersectionObserver(entries => {
 
@@ -32,22 +32,30 @@ export class ViewportTriggerComponent implements OnInit {
       this.viewportListener.observe(this.el.nativeElement as HTMLElement);
     }
     else
-      alert('Not Supported !');
+      this.onNotSupported();
   }
 
   viewportListener: any = new Subject();
   viewportVisibleFlag: boolean = false;
   @Output() onViewVisibile: any = new EventEmitter();
+  @Output() notSupportedTrigger: any = new EventEmitter();
 
   onViewVisibility() {
     this.viewportVisibleFlag = true;
     // Probably needs to be called in production        
-    this.viewportListener.disconnect();         // disconnect just after first view
+    this.viewportListener?.disconnect();         // disconnect just after first view
     this.onViewVisibile.emit(this.viewportVisibleFlag);
   }
 
+  onNotSupported() {
+    setTimeout(() => {
+      console.log('Not Supported !');
+      this.notSupportedTrigger.emit(false);
+    }, 0);
+  }
+
   ngOnDestroy() {
-    this.viewportListener.disconnect();
+    this.viewportListener?.disconnect();
   }
 
 }

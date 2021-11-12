@@ -16,7 +16,9 @@ enum SectionVisibilityEnum {
 })
 export class Home3Component implements OnInit {
 
-  constructor() { }
+  constructor() {
+    this.visibileSectionsTrigger = {};
+  }
 
   ngOnInit(): void { }
 
@@ -28,5 +30,11 @@ export class Home3Component implements OnInit {
     // console.log(`MAIN ID: ${id}`)
     this.visibileSectionsTrigger[id] = true;          // Marking the section using Section-id as VISIBLE
   }
+
+  // onNotSupported() {
+  //   Object.values(SectionVisibilityEnum).forEach(section => {
+  //     this.visibileSectionsTrigger[section] = true;
+  //   });
+  // }
 
 }
