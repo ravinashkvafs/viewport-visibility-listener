@@ -15,13 +15,15 @@ export class ViewportVisibilityListenerDirective {
     this.viewportListener = new IntersectionObserver(entries => {
 
       if (entries[0].isIntersecting === true) {
-        console.log(`Entries: ${entries}`)
+        // console.log(`Entries: ${entries}`)
         this.onViewVisibility();
       }
       else {
         // this.viewportVisibleFlag = false;
       }
     }, {
+      root: null,
+      rootMargin: "100px",
       threshold: 0.2     // 1.0 means that when 100% of the target is visible within the element specified by the root option, the callback is invoked
     });
 

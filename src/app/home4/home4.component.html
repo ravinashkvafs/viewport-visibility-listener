@@ -3,13 +3,26 @@
     <app-comp1></app-comp1>
     <app-comp2></app-comp2>
     <app-comp3></app-comp3>
-    <app-comp4 appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(4)"> </app-comp4>
-    <app-comp5 appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(5)"></app-comp5>
-    <app-comp6 appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(6)"></app-comp6>
-    <!-- NOTE: COMP 7 will not be shown bcz of initial ngIf=false -->
-    <app-comp7 appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(7)" *ngIf="visibilityTrack[7]">
-    </app-comp7>
-    <app-comp8 appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(8)"></app-comp8>
-    <app-comp9 appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(9)"></app-comp9>
+    <app-comp4></app-comp4>
+
+    <div appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(5)">
+        <app-comp5 *ngIf="visibilityTrack[5]"></app-comp5>
+    </div>
+
+    <div *ngIf="visibilityTrack[5]" appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(6)">
+        <app-comp6 *ngIf="visibilityTrack[6]"></app-comp6>
+    </div>
+
+    <div *ngIf="visibilityTrack[6]" appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(7)">
+        <app-comp7 *ngIf="visibilityTrack[7]"> </app-comp7>
+    </div>
+
+    <div *ngIf="visibilityTrack[7]" appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(8)">
+        <app-comp8 *ngIf="visibilityTrack[8]"></app-comp8>
+    </div>
+
+    <div *ngIf="visibilityTrack[8]" appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(9)">
+        <app-comp9 *ngIf="visibilityTrack[9]"></app-comp9>
+    </div>
 
 </div>

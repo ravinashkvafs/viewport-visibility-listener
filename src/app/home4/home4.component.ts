@@ -14,7 +14,7 @@ export class Home4Component implements OnInit {
   visibilityTrack: any = {};
 
   onViewVisibileMain(id: any) {
-    console.log(`MAIN ID: ${id}`)
+    // console.log(`MAIN ID: ${id}`)
     this.visibilityTrack[id] = true;
   }
 

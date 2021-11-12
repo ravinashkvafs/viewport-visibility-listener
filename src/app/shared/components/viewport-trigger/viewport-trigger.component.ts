@@ -26,7 +26,7 @@ export class ViewportTriggerComponent implements OnInit {
       }, {
         root: null,
         rootMargin: "100px",
-        threshold: 0.11
+        threshold: 1
       });
 
       this.viewportListener.observe(this.el.nativeElement as HTMLElement);
