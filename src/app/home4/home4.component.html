@@ -1,3 +1,7 @@
+<div style="position: sticky; top: 0; left: 0; background-color: white;">
+    {{visibilityTrack | json}}
+</div>
+
 <div id="scrollArea">
 
     <app-comp1></app-comp1>
@@ -5,24 +9,24 @@
     <app-comp3></app-comp3>
     <app-comp4></app-comp4>
 
-    <div appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(5)">
-        <app-comp5 *ngIf="visibilityTrack[5]"></app-comp5>
+    <div #comp5>
+        <app-comp5 *appViewportVisibilityListener="comp5;nextTrack:visibilityTrack;nextId:6"></app-comp5>
     </div>
 
-    <div *ngIf="visibilityTrack[5]" appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(6)">
-        <app-comp6 *ngIf="visibilityTrack[6]"></app-comp6>
+    <div #comp6 *ngIf="visibilityTrack[6]">
+        <app-comp6 *appViewportVisibilityListener="comp6;nextTrack:visibilityTrack;nextId:7"></app-comp6>
     </div>
 
-    <div *ngIf="visibilityTrack[6]" appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(7)">
-        <app-comp7 *ngIf="visibilityTrack[7]"> </app-comp7>
+    <div #comp7 *ngIf="visibilityTrack[7]">
+        <app-comp7 *appViewportVisibilityListener="comp7;nextTrack:visibilityTrack;nextId:8"></app-comp7>
     </div>
 
-    <div *ngIf="visibilityTrack[7]" appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(8)">
-        <app-comp8 *ngIf="visibilityTrack[8]"></app-comp8>
+    <div #comp8 *ngIf="visibilityTrack[8]">
+        <app-comp8 *appViewportVisibilityListener="comp8;nextTrack:visibilityTrack;nextId:9"></app-comp8>
     </div>
 
-    <div *ngIf="visibilityTrack[8]" appViewportVisibilityListener (onViewVisibile)="onViewVisibileMain(9)">
-        <app-comp9 *ngIf="visibilityTrack[9]"></app-comp9>
+    <div #comp9 *ngIf="visibilityTrack[9]">
+        <app-comp9 *appViewportVisibilityListener="comp9"></app-comp9>
     </div>
 
 </div>

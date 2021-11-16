@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'home2', component: Home2Component },
   { path: 'home3', component: Home3Component },
   { path: 'home4', component: Home4Component },
-  { path: '**', redirectTo: '/home3' }
+  { path: '**', redirectTo: '/home4' }
 ];
 
 @NgModule({

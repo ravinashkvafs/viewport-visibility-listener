@@ -1,25 +1,45 @@
-import { Directive, ElementRef, EventEmitter, Output } from '@angular/core';
+import { ContentChild, Directive, ElementRef, EventEmitter, Input, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Home4Component } from 'src/app/home4/home4.component';
 
 @Directive({
   selector: '[appViewportVisibilityListener]'
 })
 export class ViewportVisibilityListenerDirective {
 
-  constructor(private el: ElementRef) { }
+  constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef) { }
 
   viewportListener: any = null;
-  viewportVisibleFlag: boolean = false;
-  @Output() onViewVisibile: any = new EventEmitter();
+  trackObj: any = {};
+  nextId: any = null;
+  @Input() set appViewportVisibilityListenerNextTrack(trackObj: any) {
+    this.trackObj = trackObj;
+  }
+  @Input() set appViewportVisibilityListenerNextId(nextId: any) {
+    this.nextId = nextId;
+  }
 
-  ngAfterViewInit() {
+  ngOnInit() {
+    // console.log(this.appViewportVisibilityListenerNextTrack, this.appViewportVisibilityListenerNextId);
+  }
+
+  disconnectOnceVisible() {
+    this.viewportListener.disconnect();         // disconnect just after first view
+  }
+
+  @Input() set appViewportVisibilityListener(element: any) {
+
+    const el = new ElementRef(element);
+
     this.viewportListener = new IntersectionObserver(entries => {
 
       if (entries[0].isIntersecting === true) {
-        // console.log(`Entries: ${entries}`)
-        this.onViewVisibility();
+        this.viewContainer.createEmbeddedView(this.templateRef);
+        this.disconnectOnceVisible();
+        if (this.trackObj)
+          this.trackObj[this.nextId] = true;
       }
       else {
-        // this.viewportVisibleFlag = false;
+        this.viewContainer.clear();
       }
     }, {
       root: null,
@@ -27,18 +47,12 @@ export class ViewportVisibilityListenerDirective {
       threshold: 0.2     // 1.0 means that when 100% of the target is visible within the element specified by the root option, the callback is invoked
     });
 
-    this.viewportListener.observe(this.el.nativeElement as HTMLElement);
-  }
+    this.viewportListener.observe(el.nativeElement as HTMLElement);
 
-  onViewVisibility() {
-    this.viewportVisibleFlag = true;
-    // Probably needs to be called in production        
-    this.viewportListener.disconnect();         // disconnect just after first view
-    this.onViewVisibile.emit(this.viewportVisibleFlag);
   }
 
   ngOnDestroy() {
-    this.viewportListener.disconnect();
+    this.disconnectOnceVisible();
   }
 
 }
